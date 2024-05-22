@@ -1,0 +1,42 @@
+# Node modules directory
+node_modules/
+
+# Build output directories
+dist/
+build/
+
+# TypeScript cache files
+*.tsbuildinfo
+
+# Log files
+*.log
+
+# Environment variables file
+.env
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+
+# Optional npm cache directory
+.npm
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Optional REPL history
+.node_repl_history
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Ignore yarn lock file if using npm
+yarn.lock

@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "noImplicitAny": true,          // Enable warning for implicit any type
+      "strictNullChecks": true,       // Enable warning for null checks
+      "noImplicitThis": true,         // Enable warning for implicit this type
+      "alwaysStrict": true,           // Parse in strict mode and emit "use strict" for each source file
+      "noUnusedLocals": true,         // Warn on unused locals
+      "noUnusedParameters": true,     // Warn on unused parameters
+      "noImplicitReturns": true,      // Warn on functions with implicit returns
+      "noFallthroughCasesInSwitch": true // Warn on fallthrough cases in switch statements
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+  }
