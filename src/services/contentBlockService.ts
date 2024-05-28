@@ -17,6 +17,10 @@ export const getAllContentBlocksForPage = async (
   return await ContentBlock.find({ pageId });
 };
 
+export const getAllContentBlocks = async (): Promise<IContentBlock[]> => {
+  return await ContentBlock.find();
+};
+
 export const updateContentBlock = async (
   id: string,
   type: string,

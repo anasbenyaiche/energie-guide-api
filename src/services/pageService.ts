@@ -19,6 +19,7 @@ export const createPage = async (
   slug: string,
   created_by: string
 ) => {
+  console.log({ title, slug, created_by });
   const page = new Page({ title, slug, created_by });
   return await page.save();
 };

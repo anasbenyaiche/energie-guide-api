@@ -37,6 +37,20 @@ export const getAllContentBlocksForPage = async (
     next(new CustomError(error.message, 500));
   }
 };
+
+export const getAllContentBlocks = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // TODO: ADDING PARAMS
+    const contentBlocks = await contentBlockService.getAllContentBlocks();
+    res.json(contentBlocks);
+  } catch (error) {
+    next(new CustomError(error.message, 500));
+  }
+};
 //@ts-ignore
 export const updateContentBlock = async (
   req: Request,

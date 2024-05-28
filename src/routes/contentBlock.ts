@@ -10,6 +10,8 @@ router.post(
   authorizeRoles(["admin"]),
   contentBlockController.createContentBlock
 );
+
+router.get("/blocks/all", contentBlockController.getAllContentBlocks);
 router.get(
   "/pages/:pageId/blocks",
   contentBlockController.getAllContentBlocksForPage

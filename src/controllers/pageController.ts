@@ -40,6 +40,7 @@ export const createPage = async (
     const newPage = await pageService.createPage(title, slug, created_by);
     res.status(201).json(newPage);
   } catch (err) {
+    console.log(err);
     next(new CustomError(err.message, 400));
   }
 };
