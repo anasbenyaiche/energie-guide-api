@@ -5,7 +5,9 @@ const MenuItemSchema = new Schema<IMenuItem>(
   {
     menu_id: { type: Schema.Types.ObjectId, ref: "Menu", required: true },
     page_id: { type: Schema.Types.ObjectId, ref: "Page", required: true },
-    position: { type: Number, required: true },
+    order: { type: Number, required: true },
+    title: { type: String, required: true },
+    link: { type: String, required: true },
   },
   { timestamps: true }
 );

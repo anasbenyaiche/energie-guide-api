@@ -4,9 +4,11 @@ import { IMenuItem } from "../types/IMenuItem";
 export const createMenuItem = async (
   title: string,
   link: string,
-  order: number
+  order: number,
+  menu_id: string,
+  page_id: string
 ): Promise<IMenuItem> => {
-  const menuItem = new MenuItem({ title, link, order });
+  const menuItem = new MenuItem({ title, link, order, menu_id, page_id });
   return await menuItem.save();
 };
 

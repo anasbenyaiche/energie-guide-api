@@ -8,8 +8,15 @@ export const createMenuItem = async (
   next: NextFunction
 ) => {
   try {
-    const { title, link, order } = req.body;
-    const menuItem = await menuItemService.createMenuItem(title, link, order);
+    const menu_id = req.params.id;
+    const { title, link, order, page_id } = req.body;
+    const menuItem = await menuItemService.createMenuItem(
+      title,
+      link,
+      order,
+      menu_id,
+      page_id
+    );
     res.status(201).json(menuItem);
   } catch (error) {
     next(new CustomError(error.message, 400));

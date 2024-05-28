@@ -4,7 +4,11 @@ import { IContentBlock } from "../types/IContentBlock";
 const ContentBlockSchema = new Schema<IContentBlock>(
   {
     page_id: { type: Schema.Types.ObjectId, ref: "Page", required: true },
-    type: { type: String, required: true },
+    type: {
+      type: String,
+      enum: ["text", "image", "charts", "table", "link"],
+      required: true,
+    },
     content: { type: Schema.Types.Mixed, required: true },
     position: { type: Number, required: true },
   },

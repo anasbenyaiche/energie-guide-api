@@ -24,8 +24,8 @@ export const createAdminUser = async (
   next: NextFunction
 ) => {
   try {
-    const { username, password } = req.body;
-    await authService.createAdminUser(username, password);
+    const { username, password, email } = req.body;
+    await authService.createAdminUser(username, password, email);
     res.status(201).json({ message: "Admin user created successfully" });
   } catch (err) {
     next(new CustomError(err.message, 400));

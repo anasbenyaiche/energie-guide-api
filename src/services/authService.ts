@@ -17,18 +17,24 @@ export const login = async (username: string, password: string) => {
   return { user, token };
 };
 
-export const createAdminUser = async (username: string, password: string) => {
+export const createAdminUser = async (
+  username: string,
+  password: string,
+  email: string
+) => {
   // Check if the admin user already exists
   const adminExists = await User.findOne({ role: "admin" });
   if (adminExists) {
     throw new Error("Admin user already exists");
   }
+  const salt = await bcrypt.genSalt(10);
 
   // Hash the password
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   // Create the admin user
   const adminUser = new User({
+    email,
     username,
     password: hashedPassword,
     role: "admin",

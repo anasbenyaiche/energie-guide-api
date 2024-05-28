@@ -2,11 +2,12 @@ import ContentBlock from "../models/ContentBlock";
 import { IContentBlock } from "../types/IContentBlock";
 
 export const createContentBlock = async (
-  pageId: string,
+  page_id: string,
   type: string,
-  content: string
+  content: string,
+  position: number
 ): Promise<IContentBlock> => {
-  const contentBlock = new ContentBlock({ pageId, type, content });
+  const contentBlock = new ContentBlock({ page_id, type, content, position });
   return await contentBlock.save();
 };
 

@@ -6,19 +6,20 @@ const router = Router();
 
 // Menu item routes
 router.post(
-  "/menus/:id/items",
+  "/:id/items",
   authenticateJWT,
   authorizeRoles(["admin"]),
   menuItemController.createMenuItem
 );
+router.get("/:id/items", menuItemController.getAllMenuItems);
 router.put(
-  "/menus/items/:id",
+  "/items/:id",
   authenticateJWT,
   authorizeRoles(["admin"]),
   menuItemController.updateMenuItem
 );
 router.delete(
-  "/menus/items/:id",
+  "/items/:id",
   authenticateJWT,
   authorizeRoles(["admin"]),
   menuItemController.deleteMenuItem

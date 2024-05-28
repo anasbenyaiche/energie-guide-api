@@ -8,12 +8,13 @@ export const createContentBlock = async (
   next: NextFunction
 ) => {
   try {
-    const { pageId } = req.params;
-    const { type, content } = req.body;
+    const { pageId: page_id } = req.params;
+    const { type, content, position } = req.body;
     const contentBlock = await contentBlockService.createContentBlock(
-      pageId,
+      page_id,
       type,
-      content
+      content,
+      position
     );
     res.status(201).json(contentBlock);
   } catch (error) {

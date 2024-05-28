@@ -36,6 +36,7 @@ export const createPage = async (
 ) => {
   try {
     const { title, slug, created_by } = req.body;
+
     const newPage = await pageService.createPage(title, slug, created_by);
     res.status(201).json(newPage);
   } catch (err) {

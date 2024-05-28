@@ -2,6 +2,7 @@ import { Router } from "express";
 import authRoutes from "./auth";
 import pageRoutes from "./page";
 import menuRoutes from "./menu";
+import menuItemRoutes from "./menuItem";
 import contentBlockRoutes from "./contentBlock";
 
 const router = Router();
@@ -9,7 +10,8 @@ const router = Router();
 router.use("/auth", authRoutes);
 router.use("/pages", pageRoutes);
 router.use("/menus", menuRoutes);
-router.use("/blocks", contentBlockRoutes);
+router.use("/menu", menuItemRoutes);
+router.use("/", contentBlockRoutes);
 
 export default router;
 

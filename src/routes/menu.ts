@@ -5,21 +5,21 @@ import { authenticateJWT, authorizeRoles } from "../middleware/auth";
 const router = Router();
 
 router.post(
-  "/menus",
+  "",
   authenticateJWT,
   authorizeRoles(["admin"]),
   menuController.createMenu
 );
-router.get("/menus", menuController.getAllMenus);
-router.get("/menus/:id", menuController.getMenuById);
+router.get("", menuController.getAllMenus);
+router.get("/:id", menuController.getMenuById);
 router.put(
-  "/menus/:id",
+  "/:id",
   authenticateJWT,
   authorizeRoles(["admin"]),
   menuController.updateMenu
 );
 router.delete(
-  "/menus/:id",
+  "/:id",
   authenticateJWT,
   authorizeRoles(["admin"]),
   menuController.deleteMenu

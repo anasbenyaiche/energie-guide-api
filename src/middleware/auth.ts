@@ -4,7 +4,7 @@ import CustomError from "../errors/CustomError";
 
 const authenticateJWT = (req: Request, _res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(" ")[1];
-
+  console.log(token);
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
       if (err) {

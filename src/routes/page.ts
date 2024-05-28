@@ -5,21 +5,21 @@ import { authenticateJWT, authorizeRoles } from "../middleware/auth";
 const router = Router();
 
 router.post(
-  "/pages",
+  "",
   authenticateJWT,
   authorizeRoles(["admin"]),
   pageController.createPage
 );
-router.get("/pages", pageController.getAllPages);
-router.get("/pages/:id", pageController.getPageById);
+router.get("", pageController.getAllPages);
+router.get("/:id", pageController.getPageById);
 router.put(
-  "/pages/:id",
+  "/:id",
   authenticateJWT,
   authorizeRoles(["admin"]),
   pageController.updatePage
 );
 router.delete(
-  "/pages/:id",
+  "/:id",
   authenticateJWT,
   authorizeRoles(["admin"]),
   pageController.deletePage
