@@ -15,6 +15,19 @@ export const getAllPages = async (
   }
 };
 
+export const getPagesWithoutMenuItems = async (
+  _req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const pages = await pageService.getPagesWithoutMenuItems();
+    res.json(pages);
+  } catch (err) {
+    next(new CustomError(err.message, 500));
+  }
+};
+
 export const getPageById = async (
   req: Request,
   res: Response,
@@ -52,6 +65,7 @@ export const updatePage = async (
 ) => {
   try {
     const { id } = req.params;
+
     const updatedPage = await pageService.updatePage(id, req.body);
     res.json(updatedPage);
   } catch (err) {

@@ -44,3 +44,32 @@ export const deletePage = async (id: string) => {
   }
   return deletedPage;
 };
+
+export const getPagesWithoutMenuItems = async () => {
+  try {
+    const pages = await Page.aggregate([
+      {
+        $lookup: {
+          from: "MenuItem",
+          localField: "_id",
+          foreignField: "page_id",
+          as: "menuItems",
+        },
+      },
+      {
+        $match: { menuItems: { $size: 0 } },
+      },
+      {
+        $project: {
+          title: 1,
+          slug: 1,
+        },
+      },
+    ]);
+
+    return pages;
+  } catch (error) {
+    console.error("Error fetching pages:", error);
+    throw error; // Or handle the error differently
+  }
+};

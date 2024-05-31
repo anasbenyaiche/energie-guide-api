@@ -11,6 +11,8 @@ router.post(
   menuController.createMenu
 );
 router.get("", menuController.getAllMenus);
+router.get("/extract", menuController.getMenuItemsByPlacement);
+
 router.get("/:id", menuController.getMenuById);
 router.put(
   "/:id",

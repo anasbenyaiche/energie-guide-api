@@ -11,6 +11,8 @@ router.post(
   pageController.createPage
 );
 router.get("", pageController.getAllPages);
+
+router.get("/related", pageController.getPagesWithoutMenuItems);
 router.get("/:id", pageController.getPageById);
 router.put(
   "/:id",
