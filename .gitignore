@@ -40,3 +40,7 @@ coverage/
 
 # Ignore yarn lock file if using npm
 yarn.lock
+
+# Uploaded files
+/uploads/*
+!/uploads/.gitkeep
