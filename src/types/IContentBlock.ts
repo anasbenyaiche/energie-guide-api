@@ -11,4 +11,5 @@ export interface IContentBlock extends Document {
   type: string;
   content: contentType;
   position: number;
+  imageUrl?: string;
 }

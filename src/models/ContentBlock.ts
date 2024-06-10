@@ -10,6 +10,10 @@ const ContentBlockSchema = new Schema<IContentBlock>(
       required: true,
     },
     content: { type: Schema.Types.Mixed, required: true },
+    imageUrl: {
+      type: String,
+      required: false,
+    },
     position: { type: Number, required: true },
   },
   { timestamps: true }

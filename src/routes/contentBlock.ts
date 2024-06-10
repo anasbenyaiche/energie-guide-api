@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as contentBlockController from "../controllers/contentBlockController";
 import { authenticateJWT, authorizeRoles } from "../middleware/auth";
+import upload from "../config/upload";
 
 const router = Router();
 
@@ -27,6 +28,11 @@ router.delete(
   authenticateJWT,
   authorizeRoles(["admin"]),
   contentBlockController.deleteContentBlock
+);
+router.post(
+  "/upload-image",
+  upload.single("image"),
+  contentBlockController.uploadImageContentBlock
 );
 
 export default router;

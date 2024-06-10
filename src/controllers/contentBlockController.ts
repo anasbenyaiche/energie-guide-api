@@ -39,7 +39,7 @@ export const getAllContentBlocksForPage = async (
 };
 
 export const getAllContentBlocks = async (
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction
 ) => {
@@ -86,4 +86,18 @@ export const deleteContentBlock = async (
   } catch (error) {
     next(new CustomError(error.message, 500));
   }
+};
+//@ts-ignore
+export const uploadImageContentBlock = (
+  req: Request,
+  res: Response,
+  _next: NextFunction
+) => {
+  //@ts-ignore
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" });
+  }
+  //@ts-ignore
+  const imageUrl = `/uploads/${req.file.filename}`;
+  res.status(200).json({ message: "Image uploaded successfully", imageUrl });
 };
