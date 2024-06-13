@@ -12,6 +12,7 @@ router.post(
   menuItemController.createMenuItem
 );
 router.get("/:id/items", menuItemController.getAllMenuItems);
+router.get("/items/:id", menuItemController.getMenuItemById);
 router.put(
   "/items/:id",
   authenticateJWT,
