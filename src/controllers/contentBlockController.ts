@@ -9,12 +9,13 @@ export const createContentBlock = async (
 ) => {
   try {
     const { pageId: page_id } = req.params;
-    const { type, content, position } = req.body;
+    const { type, content, position, imageUrl } = req.body;
     const contentBlock = await contentBlockService.createContentBlock(
       page_id,
       type,
       content,
-      position
+      position,
+      imageUrl
     );
     res.status(201).json(contentBlock);
   } catch (error) {
@@ -88,16 +89,47 @@ export const deleteContentBlock = async (
   }
 };
 //@ts-ignore
-export const uploadImageContentBlock = (
+export const uploadImageContentBlock = async (
   req: Request,
   res: Response,
-  _next: NextFunction
+  next: NextFunction
 ) => {
-  //@ts-ignore
-  if (!req.file) {
-    return res.status(400).json({ message: "No file uploaded" });
+  try {
+    //@ts-ignore
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+    //@ts-ignore
+    const imageUrl = `/uploads/${req.file.filename}`;
+    const { type, content, position, page_id } = req.body;
+
+    const contentBlock = await contentBlockService.createContentBlock(
+      page_id,
+      type,
+      content,
+      position,
+      imageUrl
+    );
+
+    res
+      .status(200)
+      .json({ message: "Image uploaded successfully", contentBlock });
+  } catch (error) {
+    next(new CustomError(error.message, 400));
   }
-  //@ts-ignore
-  const imageUrl = `/uploads/${req.file.filename}`;
-  res.status(200).json({ message: "Image uploaded successfully", imageUrl });
+};
+export const updateContentBlockPositions = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { blocks } = req.body;
+    await contentBlockService.updateContentBlockPositions(blocks);
+    res
+      .status(200)
+      .json({ message: "Content block positions updated successfully" });
+  } catch (error) {
+    next(new CustomError(error.message, 400));
+  }
 };

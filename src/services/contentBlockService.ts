@@ -5,9 +5,10 @@ export const createContentBlock = async (
   page_id: string,
   type: string,
   content: string,
-  position: number
+  position: number,
+  imageUrl: string
 ): Promise<IContentBlock> => {
-  const contentBlock = new ContentBlock({ page_id, type, content, position });
+  const contentBlock = new ContentBlock({ page_id, type, content, position, imageUrl });
   return await contentBlock.save();
 };
 
@@ -35,4 +36,15 @@ export const updateContentBlock = async (
 
 export const deleteContentBlock = async (id: string): Promise<void> => {
   await ContentBlock.findByIdAndDelete(id);
+};
+export const updateContentBlockPositions = async (
+  blocks: IContentBlock[]
+): Promise<void> => {
+  const bulkOps = blocks.map(block => ({
+    updateOne: {
+      filter: { _id: block._id },
+      update: { $set: { position: block.position } }
+    }
+  }));
+  await ContentBlock.bulkWrite(bulkOps);
 };
