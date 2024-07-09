@@ -7,6 +7,7 @@ export enum contentType {
 }
 
 export interface IContentBlock extends Document {
+  _id: string;
   page_id: Schema.Types.ObjectId;
   type: string;
   content: contentType;
